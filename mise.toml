@@ -1,0 +1,13 @@
+# Railway's build system (Railpack) uses mise to install the Python
+# runtime declared in runtime.txt. Some python-build-standalone
+# releases (used under the hood by mise) don't have GitHub artifact
+# attestations available, which makes mise fail with:
+#
+#   mise ERROR Failed to install core:python@X.Y.Z:
+#   No GitHub artifact attestations found for python@X.Y.Z
+#
+# This setting disables that verification step so the build can
+# proceed. It does not disable checksum verification of the
+# downloaded archive, only the (optional) GitHub provenance check.
+[settings]
+python.github_attestations = false
